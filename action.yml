@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'SFTP Transfer'
+description: 'Connect to SFTP Server and Transfer Local Files'
 inputs:
   server: 
     description: 'Server name secret'
@@ -26,8 +26,8 @@ inputs:
     required: true
     default: '/'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  directory:
+    description: 'Directory List'
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -23,6 +23,7 @@ try {
     return sftp.list(core.getInput('remote-path') ? core.getInput('remote-path') : '/public_html/');
   }).then(data => {
     console.log(data, 'the data info');
+    core.setOutput(directory, data);
   }).catch(err => {
     console.log(err, 'catch error');
   });

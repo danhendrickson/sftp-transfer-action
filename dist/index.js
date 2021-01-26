@@ -30,14 +30,15 @@ try {
   let sftp = new Client();
   
   sftp.connect({
-    host: core.getInput('server') ? core.getInput('server') : '68.183.103.230',
-    port: core.getInput('port') ? core.getInput('port') : '22',
-    username: core.getInput('user') ? core.getInput('user') : 'adenbrook-api',
-    password: core.getInput('pass') ? core.getInput('pass') : '4H#M$KT232k*926x',
+    host: core.getInput('server'),
+    port: core.getInput('port'),
+    username: core.getInput('user'),
+    password: core.getInput('pass'),
   }).then(() => {
     return sftp.list(core.getInput('remote-path') ? core.getInput('remote-path') : '/public_html/');
   }).then(data => {
     console.log(data, 'the data info');
+    core.setOutput(directory, data);
   }).catch(err => {
     console.log(err, 'catch error');
   });

@@ -1,10 +1,30 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  server: 
+    description: 'Server name secret'
     required: true
-    default: 'World'
+    default: ''
+  user:  
+    description: 'Username secret'
+    required: true
+    default: ''
+  pass:  
+    description: 'Password secret'
+    required: true
+    default: ''
+  port:  
+    description: 'Port'
+    required: true
+    default: '22'
+  local-path:  
+    description: 'Local Path'
+    required: true
+    default: '/'
+  remote-path:  
+    description: 'Remote Path'
+    required: true
+    default: '/'
 outputs:
   time: # id of output
     description: 'The time we greeted you'

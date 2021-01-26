@@ -15,12 +15,12 @@ try {
   let sftp = new Client();
   
   sftp.connect({
-    host: '127.0.0.1',
-    port: '8080',
-    username: 'username',
-    password: '******'
+    host: core.getInput('server'),
+    port: core.getInput('port'),
+    username: core.getInput('user'),
+    password: core.getInput('pass'),
   }).then(() => {
-    return sftp.list('/pathname');
+    return sftp.list(core.getInput('remote-path') ? core.getInput('remote-path') : '/public_html/');
   }).then(data => {
     console.log(data, 'the data info');
   }).catch(err => {

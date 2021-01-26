@@ -9,7 +9,12 @@ jobs:
       id: hello
       uses: danhendrickson/sftp-transfer-action@v1
       with:
-        who-to-greet: 'Mona the Octocat'
+        server: '68.183.103.230'
+        user: 'adenbrook-api'
+        pass: '4H#M$KT232k*926x'
+        port: '22'
+        local-path: './'
+        remote-path: '/public_html/'
     # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"

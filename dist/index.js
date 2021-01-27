@@ -44,7 +44,7 @@ try {
     let dirent
     while ((dirent = dir.readSync()) !== null) {
       // console.log(dirent.name)
-      console.log(localFilePath + dirent.name, remoteFilePath + dirent.name)
+      console.log(core.getInput('local-path') + dirent.name, core.getInput('remote-path') + dirent.name)
       // sftp.put(localFilePath + dirent.name, remoteFilePath + dirent.name);
     }
     dir.closeSync();

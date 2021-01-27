@@ -21,20 +21,13 @@ try {
     port: core.getInput('port'),
     username: core.getInput('user'),
     password: core.getInput('pass'),
-  }).then(() => {
+  }).then(connection => {
+    console.log('connection',connection);
     // return sftp.list(core.getInput('remote-path'));
   }).then(data => {
     // console.log(data, 'the data info');
 
-    // Read local directory
-    const dir = fs.opendirSync(core.getInput('local-path'))
-    let dirent
-    while ((dirent = dir.readSync()) !== null) {
-      // console.log(dirent.name)
-      console.log(localFilePath + dirent.name, remoteFilePath + dirent.name)
-      // sftp.put(localFilePath + dirent.name, remoteFilePath + dirent.name);
-    }
-    dir.closeSync();
+    // console.log('connected?')
 
   }).catch(err => {
     console.log(err, 'catch error');

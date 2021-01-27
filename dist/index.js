@@ -36,9 +36,6 @@ try {
   };
 
   sftp.connect(config)
-    .then(() => {
-
-    })
     .then(data => {
 
     // Create remote dir

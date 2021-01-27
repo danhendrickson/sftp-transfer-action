@@ -28,6 +28,8 @@ inputs:
 outputs:
   directory:
     description: 'Directory List'
+  transferStatus:
+    description: 'Status of Transfer'
 runs:
   using: 'node12'
   main: 'dist/index.js'

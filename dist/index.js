@@ -41,11 +41,11 @@ try {
     })
     .then(data => {
 
-    // Create remote dir
-    client.mkdir(remoteDir, true);
+    // // Create remote dir
+    // client.mkdir(remoteDir, true);
 
     // Read local directory
-    const dir = fs.opendirSync(core.getInput('local-path'))
+    // const dir = fs.opendirSync(core.getInput('local-path'))
 
     // Loop through directory and move each file
     // let dirent
@@ -63,6 +63,7 @@ try {
   })
   .then(() => {
     client.end();
+    core.setOutput('transferStatus', 'completed');
   })
   .catch(err => {
     console.log(err, 'catch error');

@@ -1,20 +1,22 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  sftp_transfer_job:
     runs-on: ubuntu-latest
     name: SFTP Transfer Test
     steps:
+    - uses: actions/checkout@v1
+
     - name: Connect
       id: connect
       uses: danhendrickson/sftp-transfer-action@v1
-      with:
-        server: '68.183.103.230'
-        user: 'adenbrook-api'
-        pass: '4H#M$KT232k*926x'
-        port: '22'
+      env:
+        server: ${{ secrets.AB_DEV_SERVER }}
+        user: ${{ secrets.AB_DEV_SERVER_USER }}
+        pass: ${{ secrets.AB_DEV_SERVER_PASS }}
+        port: ${{ secrets.AB_DEV_SERVER_PORT }}
         local-path: './'
         remote-path: '/public_html/'
-    # Use the output from the `hello` step
+
     - name: List Directory
-      run: echo "The time was ${{ steps.connect.outputs.directory }}"
+      run: echo "The time was ${{ steps.connect.with.directory }}"

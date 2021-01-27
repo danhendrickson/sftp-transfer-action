@@ -25,7 +25,7 @@ try {
     username: core.getInput('user'),
     password: core.getInput('pass'),
   }).then(() => {
-    return sftp.list(core.getInput('remote-path') ? core.getInput('remote-path') : '/public_html/');
+    return sftp.list(core.getInput('remote-path'));
   }).then(data => {
     console.log(data, 'the data info');
     core.setOutput(directory, data);

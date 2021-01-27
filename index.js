@@ -27,7 +27,7 @@ try {
     .then(data => {
 
     // Create remote dir
-    client.mkdir(remoteDir, true);
+    // sftp.mkdir(remoteDir, true);
 
     // Read local directory
     // const dir = fs.opendirSync(core.getInput('local-path'))

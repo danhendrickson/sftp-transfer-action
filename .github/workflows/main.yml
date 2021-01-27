@@ -16,7 +16,7 @@ jobs:
         pass: '4H#M$KT232k*926x'
         port: 22
         local-path: './'
-        remote-path: '/public_html/'
+        remote-path: '/api/'
 
     - name: List Directory
       run: echo "The time was ${{ steps.connect.with.directory }}"

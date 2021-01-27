@@ -1,5 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+let Client = __nccwpck_require__(9526);
+let sftp = new Client();
 
 try {
 
@@ -10,9 +12,6 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)
 //   console.log(`The event payload: ${payload}`);
-
-  let Client = __nccwpck_require__(9526);
-  let sftp = new Client();
   
   sftp.connect({
     host: core.getInput('server'),

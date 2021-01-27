@@ -26,8 +26,8 @@ try {
     })
     .then(data => {
 
-    // // Create remote dir
-    // client.mkdir(remoteDir, true);
+    // Create remote dir
+    client.mkdir(remoteDir, true);
 
     // Read local directory
     // const dir = fs.opendirSync(core.getInput('local-path'))
@@ -39,15 +39,15 @@ try {
     //   sftp.put(core.getInput('local-path') + dirent.name, core.getInput('remote-path') + dirent.name);
     // }
 
-    client.on('upload', info => {
+    sftp.on('upload', info => {
       console.log(`Listener: Uploaded ${info.source}`);
     });
-    client.uploadDir(core.getInput('local-path'), core.getInput('remote-path'));
+    sftp.uploadDir(core.getInput('local-path'), core.getInput('remote-path'));
 
     // dir.closeSync();
   })
   .then(() => {
-    client.end();
+    sftp.end();
     core.setOutput('transferStatus', 'completed');
   })
   .catch(err => {

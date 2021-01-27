@@ -14,8 +14,8 @@ jobs:
         server: '68.183.103.230'
         user: 'adenbrook-api'
         pass: '4H#M$KT232k*926x'
-        port: '22'
-        local-path: './'
+        port: 22
+        local-path: '/dist/'
         remote-path: '/public_html/'
 
     - name: List Directory

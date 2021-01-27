@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const fs = require('fs')
 
 
 try {
@@ -20,17 +21,21 @@ try {
     port: core.getInput('port'),
     username: core.getInput('user'),
     password: core.getInput('pass'),
-    tim
   }).then(() => {
     return sftp.list(core.getInput('remote-path'));
   }).then(data => {
-    console.log(data, 'the data info');
+    // console.log(data, 'the data info');
 
-    // loop through directory
-    // sftp.put(localFilePath, remoteFilePath, [useCompression], [encoding], [addtionalOptions]);
+    // Read local directory
+    const dir = fs.opendirSync(core.getInput('local-path'))
+    let dirent
+    while ((dirent = dir.readSync()) !== null) {
+      // console.log(dirent.name)
+      console.log(localFilePath + dirent.name, remoteFilePath + dirent.name)
+      // sftp.put(localFilePath + dirent.name, remoteFilePath + dirent.name);
+    }
+    dir.closeSync();
 
-
-    // core.setOutput(directory, data);
   }).catch(err => {
     console.log(err, 'catch error');
   });

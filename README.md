@@ -32,6 +32,8 @@ This action also uses encrypted Github secrets to store credentials: https://doc
 
 ## Example usage
 
+
+```
 on: [push]
 
 jobs:
@@ -54,3 +56,4 @@ jobs:
 
     - name: Transfer Status
       run: echo "Transfer Status - ${{ steps.connect.outputs.transferStatus }}"
+```

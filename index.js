@@ -42,8 +42,7 @@ try {
     client.on('upload', info => {
       console.log(`Listener: Uploaded ${info.source}`);
     });
-    let rslt = await client.uploadDir(core.getInput('local-path'), core.getInput('remote-path'));
-    return rslt;
+    client.uploadDir(core.getInput('local-path'), core.getInput('remote-path'));
 
     // dir.closeSync();
   })

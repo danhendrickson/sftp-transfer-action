@@ -15,8 +15,7 @@ module.exports = {"i8":"0.4.10"};
 
 const core = __nccwpck_require__(5127);
 const github = __nccwpck_require__(3134);
-let Client = __nccwpck_require__(9526);
-let sftp = new Client();
+
 
 try {
 
@@ -28,16 +27,25 @@ try {
   const payload = JSON.stringify(github.context.payload, undefined, 2)
 //   console.log(`The event payload: ${payload}`);
   
+  let Client = __nccwpck_require__(9526);
+  let sftp = new Client();
+
   sftp.connect({
     host: core.getInput('server'),
     port: core.getInput('port'),
     username: core.getInput('user'),
     password: core.getInput('pass'),
+    tim
   }).then(() => {
     return sftp.list(core.getInput('remote-path'));
   }).then(data => {
     console.log(data, 'the data info');
-    core.setOutput(directory, data);
+
+    // loop through directory
+    // sftp.put(localFilePath, remoteFilePath, [useCompression], [encoding], [addtionalOptions]);
+
+
+    // core.setOutput(directory, data);
   }).catch(err => {
     console.log(err, 'catch error');
   });

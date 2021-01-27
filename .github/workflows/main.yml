@@ -9,13 +9,13 @@ jobs:
 
     - name: Connect
       id: connect
-      uses: danhendrickson/sftp-transfer-action@v1.9
+      uses: danhendrickson/sftp-transfer-action@v1.10
       with:
         server: '68.183.103.230'
         user: 'adenbrook-api'
         pass: '4H#M$KT232k*926x'
         port: 22
-        local-path: './dist/'
+        local-path: './'
         remote-path: '/public_html/'
 
     - name: List Directory

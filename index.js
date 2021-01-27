@@ -34,6 +34,8 @@ try {
     }
     dir.closeSync();
 
+    return true;
+
   }).catch(err => {
     console.log(err, 'catch error');
   });

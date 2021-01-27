@@ -47,8 +47,8 @@ try {
       host:core.getInput('server'),
       username:core.getInput('user'),
       password:core.getInput('pass'),
-      path: core.getInput('local-dir'),
-      remoteDir: core.getInput('remote-dir'),
+      path: core.getInput('local-path'),
+      remoteDir: core.getInput('remote-path'),
       excludedFolders: ['**/.git', 'node_modules'],
       exclude: ['.gitignore', '.vscode/tasks.json'],
       dryRun: false

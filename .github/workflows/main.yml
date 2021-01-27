@@ -3,10 +3,10 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: SFTP Transfer
     steps:
-    - name: Hello world action step
-      id: hello
+    - name: Connect
+      id: connect
       uses: danhendrickson/sftp-transfer-action@v1
       with:
         server: '68.183.103.230'
@@ -16,5 +16,5 @@ jobs:
         local-path: './'
         remote-path: '/public_html/'
     # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+    - name: List Directory
+      run: echo "The time was ${{ steps.connect.outputs.directory }}"

@@ -5,38 +5,52 @@ const fs = require('fs')
 
 try {
 
-  console.log('Connection params', core.getInput('server'), core.getInput('port'), core.getInput('user'), core.getInput('pass')); 
+  console.log('Server:', core.getInput('server'));
   console.log('Local Path', core.getInput('local-path')); 
   console.log('Remote Path', core.getInput('remote-path')); 
 
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-//   console.log(`The event payload: ${payload}`);
+  const payload = JSON.stringify(github.context.payload, undefined, 2);
   
   let Client = require('ssh2-sftp-client');
   let sftp = new Client();
-
-  sftp.connect({
+  let config = {
     host: core.getInput('server'),
     port: core.getInput('port'),
     username: core.getInput('user'),
     password: core.getInput('pass'),
-  }).then(data => {
-    // console.log(data, 'the data info');
+  };
+
+  sftp.connect(config)
+    .then(() => {
+
+    })
+    .then(data => {
+
+    // Create remote dir
+    client.mkdir(remoteDir, true);
 
     // Read local directory
     const dir = fs.opendirSync(core.getInput('local-path'))
-    let dirent
-    while ((dirent = dir.readSync()) !== null) {
-      // console.log(dirent.name)
-      console.log(core.getInput('local-path') + dirent.name, core.getInput('remote-path') + dirent.name);
-      sftp.put(core.getInput('local-path') + dirent.name, core.getInput('remote-path') + dirent.name);
-    }
-    dir.closeSync();
 
-    return true;
+    // Loop through directory and move each file
+    // let dirent
+    // while ((dirent = dir.readSync()) !== null) {
+    //   console.log('Transferring: ' + core.getInput('local-path') + dirent.name, 'To Location: ' + core.getInput('remote-path') + dirent.name);
+    //   sftp.put(core.getInput('local-path') + dirent.name, core.getInput('remote-path') + dirent.name);
+    // }
 
-  }).catch(err => {
+    client.on('upload', info => {
+      console.log(`Listener: Uploaded ${info.source}`);
+    });
+    let rslt = await client.uploadDir(core.getInput('local-path'), core.getInput('remote-path'));
+    return rslt;
+
+    // dir.closeSync();
+  })
+  .then(() => {
+    client.end();
+  })
+  .catch(err => {
     console.log(err, 'catch error');
   });
 

@@ -10,7 +10,7 @@ jobs:
     - name: Connect
       id: connect
       uses: danhendrickson/sftp-transfer-action@v1.1
-      env:
+      with:
         server: ${{ secrets.AB_DEV_SERVER }}
         user: ${{ secrets.AB_DEV_SERVER_USER }}
         pass: ${{ secrets.AB_DEV_SERVER_PASS }}

@@ -7,9 +7,9 @@ try {
 
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+//   console.log(`The event payload: ${payload}`);
 
-  let Client = require('ssh2-sftp-client');
+  let Client = __nccwpck_require__(9526);
   let sftp = new Client();
   
   sftp.connect({
@@ -25,6 +25,7 @@ try {
   }).catch(err => {
     console.log(err, 'catch error');
   });
+
 
 } catch (error) {
   core.setFailed(error.message);

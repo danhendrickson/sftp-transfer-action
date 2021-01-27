@@ -10,7 +10,6 @@ const github = __nccwpck_require__(134);
 
 try {
 
-  core.getInput()
   console.log('Connection params', core.getInput('server'), core.getInput('port'), core.getInput('user'), core.getInput('pass')); 
 
   return;

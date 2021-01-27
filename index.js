@@ -3,7 +3,6 @@ const github = require('@actions/github');
 
 try {
 
-  core.getInput()
   console.log('Connection params', core.getInput('server'), core.getInput('port'), core.getInput('user'), core.getInput('pass')); 
 
   return;

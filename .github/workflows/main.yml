@@ -9,7 +9,7 @@ jobs:
 
     - name: Connect
       id: connect
-      uses: danhendrickson/sftp-transfer-action@v1.10
+      uses: danhendrickson/sftp-transfer-action@v1.11
       with:
         server: '68.183.103.230'
         user: 'adenbrook-api'

@@ -4,9 +4,8 @@ const github = require('@actions/github');
 try {
 
   console.log('Connection params', core.getInput('server'), core.getInput('port'), core.getInput('user'), core.getInput('pass')); 
-
-  return;
-
+  console.log('Local Path', core.getInput('local-path')); 
+  console.log('Remote Path', core.getInput('remote-path')); 
 
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)

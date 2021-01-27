@@ -11,7 +11,10 @@ const github = __nccwpck_require__(134);
 try {
 
   core.getInput()
-  console.log('Connection params', core.env('server'), core.getInput('port'), core.getInput('user'), core.getInput('pass'));
+  console.log('Connection params', core.getInput('server'), core.getInput('port'), core.getInput('user'), core.getInput('pass')); 
+
+  return;
+
 
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)
